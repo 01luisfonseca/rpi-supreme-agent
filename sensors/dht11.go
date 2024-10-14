@@ -2,6 +2,7 @@ package sensors
 
 import (
 	"log"
+	"strconv"
 
 	"github.com/MichaelS11/go-dht"
 )
@@ -20,7 +21,7 @@ func NewDHT11(sensorName string, gpio int) (*DHT11, error) {
 		log.Println("HostInit error:", err)
 		return nil, err
 	}
-	dhtInstance, err := dht.NewDHT("GPIO19", dht.Fahrenheit, "")
+	dhtInstance, err := dht.NewDHT("GPIO"+strconv.Itoa(gpio), dht.Celsius, "")
 	if err != nil {
 		log.Println("NewDHT error:", err)
 		return nil, err
