@@ -23,7 +23,7 @@ func main() {
 			log.Printf("Error reading DHT11 sensor: %s", err)
 		}
 		// Log sensor
-		log.Printf("DHT11 sensor: %v C, %v %, %v retries", dht11.Temperature, dht11.Humidity, dht11.Retries)
+		log.Printf("DHT11 sensor: %v C, %v rh", dht11.Temperature, dht11.Humidity)
 		// Wait
 		time.Sleep(time.Second * 5)
 	}
