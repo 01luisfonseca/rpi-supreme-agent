@@ -4,7 +4,10 @@
   "description": "Handler of devices in raspberry Pi",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "ts-node-dev --respawn src/index.ts",
+    "lint": "oxlint src"
   },
   "repository": {
     "type": "git",
@@ -26,6 +29,7 @@
     "node-dht-sensor": "0.4.3"
   },
   "devDependencies": {
-    "@types/node-dht-sensor": "^0.4.2"
+    "@types/node-dht-sensor": "^0.4.2",
+    "typescript": "^5.6.3"
   }
 }
