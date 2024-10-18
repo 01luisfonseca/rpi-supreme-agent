@@ -1,4 +1,4 @@
-import * as dht11 from 'node-dht-sensor'
+import dht11 from 'node-dht-sensor'
 
 export type DHT11 = {
   temperature: number
