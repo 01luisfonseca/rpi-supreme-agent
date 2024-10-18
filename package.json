@@ -7,7 +7,8 @@
     "build": "tsc",
     "start": "node dist/index.js",
     "dev": "ts-node-dev --respawn src/index.ts",
-    "lint": "oxlint src"
+    "lint": "npx prettier . --write",
+    "test": "vitest run"
   },
   "repository": {
     "type": "git",
@@ -30,6 +31,8 @@
   },
   "devDependencies": {
     "@types/node-dht-sensor": "^0.4.2",
-    "typescript": "^5.6.3"
+    "prettier": "3.3.3",
+    "typescript": "^5.6.3",
+    "vitest": "^2.1.3"
   }
 }

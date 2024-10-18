@@ -1,5 +1,5 @@
 {
-  "include": ["src", "src/cases/.d.ts"],
+  "include": ["src", "src/**/.d.ts"],
   "exclude": ["build", "node_modules", "**/*.test.ts"],
   "compilerOptions": {
     /* Visit https://aka.ms/tsconfig to read more about this file */
