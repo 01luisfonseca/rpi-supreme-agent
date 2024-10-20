@@ -10,7 +10,7 @@ export type ServerInstance = {
 }
 
 export class Server {
-  private app: Application
+  app: Application
   private port: number
 
   constructor(serverInstance: ServerInstance) {
