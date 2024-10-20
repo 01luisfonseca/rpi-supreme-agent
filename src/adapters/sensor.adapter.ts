@@ -2,7 +2,7 @@ import {
   DeviceReader,
   EnvironmentSensor,
 } from '../entities/deviceReader.entity'
-import { DHT11, readDHT11 } from '../devices/dht11'
+import { readDHT11 } from '../devices/dht11'
 import { readBMP180 } from '../devices/bmp180'
 
 export class SensorAdapter implements DeviceReader {
