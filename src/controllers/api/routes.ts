@@ -1,7 +1,7 @@
-import { Application, Request, Response } from 'express'
+import express from 'express'
 
-export default function routes(app: Application) {
-  app.get('/', (req: Request, res: Response) => {
+export default function routes(app: express.Application) {
+  app.get('/', (req: express.Request, res: express.Response) => {
     res.send('OK')
   })
 }

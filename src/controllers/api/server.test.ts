@@ -1,13 +1,13 @@
 import { describe, expect, it, vi } from 'vitest'
 import request from 'supertest'
 import { Server } from './server'
-import { Application, Request, Response } from 'express'
+import express from 'express'
 
 describe('Server', () => {
   const serverInstance = {
     port: 3000,
-    routes: (app: Application) => {
-      app.get('/', (req: Request, res: Response) => {
+    routes: (app: express.Application) => {
+      app.get('/', (req: express.Request, res: express.Response) => {
         console.log('GET /')
         res.status(200).json({ message: 'OK' })
       })

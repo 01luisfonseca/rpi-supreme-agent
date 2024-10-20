@@ -1,7 +1,7 @@
-import express, { Application } from 'express'
+import express from 'express'
 
-export type Middleware = (app: Application) => void
-export type Routes = (app: Application) => void
+export type Middleware = (app: express.Application) => void
+export type Routes = (app: express.Application) => void
 
 export type ServerInstance = {
   port: number
@@ -10,7 +10,7 @@ export type ServerInstance = {
 }
 
 export class Server {
-  app: Application
+  app: express.Application
   private port: number
 
   constructor(serverInstance: ServerInstance) {
