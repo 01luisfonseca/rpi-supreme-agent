@@ -26,10 +26,14 @@
   },
   "dependencies": {
     "bmp180-sensor": "1.1.0",
+    "cors": "^2.8.5",
     "express": "^4.21.1",
     "node-dht-sensor": "0.4.3"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.7.7",
     "@types/node-dht-sensor": "^0.4.2",
     "prettier": "3.3.3",
     "typescript": "^5.6.3",
