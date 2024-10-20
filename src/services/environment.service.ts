@@ -21,4 +21,9 @@ export class EnvironmentService {
     const data = await this.deviceReader.read()
     await this.repository.create(data)
   }
+
+  async getCurrentMeasure(): Promise<EnvironmentSensor> {
+    const measure = await this.deviceReader.read()
+    return measure
+  }
 }

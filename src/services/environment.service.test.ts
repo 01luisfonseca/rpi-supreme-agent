@@ -27,4 +27,10 @@ describe('EnvironmentService', () => {
     const result = await service.saveMeasure()
     expect(result).toBe(undefined)
   })
+
+  it('should return a current measure', async () => {
+    const service = new EnvironmentService(deviceReader, repository)
+    const result = await service.getCurrentMeasure()
+    expect(result.temperature).toBe(10)
+  })
 })
