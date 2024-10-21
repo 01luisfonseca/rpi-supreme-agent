@@ -48,12 +48,12 @@ jobs:
       - name: Create ZIP file with epoch timestamp
         run: zip -r project-build-${{ env.TIMESTAMP }}.zip build node_modules package.json
 
-      # Step 8: Authenticate to Google Cloud
+      # Step 9: Authenticate to Google Cloud
       - name: Authenticate to Google Cloud
-        uses: google-github-actions/auth@v1
+        uses: google-github-actions/auth@v0.4.0'
         with:
           credentials_json: ${{ secrets.SERVICE_ACCOUNT }}
 
-      # Step 9: Upload ZIP to Google Cloud Storage
+      # Step 10: Upload ZIP to Google Cloud Storage
       - name: Upload ZIP to Google Cloud Storage
         run: gsutil cp project-build-${{ env.TIMESTAMP }}.zip gs://${{vars.BUCKET}}/project-build-${{ env.TIMESTAMP }}.zip
