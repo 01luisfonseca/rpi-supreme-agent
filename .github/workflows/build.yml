@@ -57,12 +57,13 @@ jobs:
         with:
           project_id: 'rpi-supreme-agent'
           workload_identity_provider: 'projects/348179736971/locations/global/workloadIdentityPools/github/providers/my-repo'
-      # Step 9.1: Install Google Cloud SDK
-      - name: Install Google Cloud SDK
-        uses: google-github-actions/setup-gcloud@master
+
+      - id: 'upload-file'
+        uses: 'google-github-actions/upload-cloud-storage@v2'
         with:
-          install_components: 'gsutil'
+          path: 'project-build-${{ env.TIMESTAMP }}.zip'
+          destination: ${{vars.BUCKET}}
 
       # Step 10: Upload ZIP to Google Cloud Storage
-      - name: Upload ZIP to Google Cloud Storage
-        run: gsutil cp project-build-${{ env.TIMESTAMP }}.zip gs://${{vars.BUCKET}}/project-build-${{ env.TIMESTAMP }}.zip
+      #- name: Upload ZIP to Google Cloud Storage
+      #  run: gsutil cp project-build-${{ env.TIMESTAMP }}.zip gs://${{vars.BUCKET}}/project-build-${{ env.TIMESTAMP }}.zip
