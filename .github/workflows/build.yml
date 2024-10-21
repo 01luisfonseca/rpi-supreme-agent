@@ -55,8 +55,9 @@ jobs:
       # Step 9: Authenticate to Google Cloud
       - uses: 'google-github-actions/auth@v2'
         with:
-          project_id: 'rpi-supreme-agent'
-          workload_identity_provider: 'projects/348179736971/locations/global/workloadIdentityPools/github/providers/my-repo'
+          credentials_json: '${{ secrets.SERVICE_ACCOUNT }}'
+          # project_id: 'rpi-supreme-agent'
+          # workload_identity_provider: 'projects/348179736971/locations/global/workloadIdentityPools/github/providers/my-repo'
 
       - id: 'upload-file'
         uses: 'google-github-actions/upload-cloud-storage@v2'
