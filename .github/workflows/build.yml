@@ -1,0 +1,59 @@
+name: Build and Upload to Google Cloud
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the code
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Step 2: Setup Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      # Step 3: Install build-essential
+      - name: Install build-essential
+        run: sudo apt-get update -y && sudo apt-get install -y build-essential
+
+      # Step 4: Set TIMESTAMP as environment variable
+      - name: Set TIMESTAMP
+        run: echo "TIMESTAMP=$(date +%s)" >> $GITHUB_ENV
+
+      # Step 5: Install dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # Step 6: Build the project
+      - name: Build the project
+        run: npm run build
+
+      # Step 7: Rerun installation of dependencies in production mode
+      - name: Rerun installation of dependencies in production mode
+        run: npm install --omit=dev
+
+      # Step 8: Compress the project into a zip file with timestamp
+      - name: Create ZIP file with epoch timestamp
+        run: zip -r project-build-${{ env.TIMESTAMP }}.zip public node_modules package.json
+
+      # Step 8: Authenticate to Google Cloud
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v1
+        with:
+          credentials_json: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
+
+      # Step 9: Upload ZIP to Google Cloud Storage
+      unrebeen.appspot.com/projects-bucket
+      - name: Upload ZIP to Google Cloud Storage
+        run: gsutil cp project-build-${{ env.TIMESTAMP }}.zip gs://${{environment.GCP_BUCKET_NAME}}/project-build-${{ env.TIMESTAMP }}.zip
