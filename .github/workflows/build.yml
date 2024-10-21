@@ -42,9 +42,7 @@ jobs:
 
       # Step 7: Rerun installation of dependencies in production mode
       - name: Rerun installation of dependencies in production mode
-        run: |
-          echo ${{ secrets.SERVICE_ACCOUNT }}
-          npm install --omit=dev
+        run: npm install --omit=dev
 
       # Step 8: Compress the project into a zip file with timestamp
       - name: Create ZIP file with epoch timestamp
