@@ -54,6 +54,5 @@ jobs:
           credentials_json: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
 
       # Step 9: Upload ZIP to Google Cloud Storage
-      unrebeen.appspot.com/projects-bucket
       - name: Upload ZIP to Google Cloud Storage
         run: gsutil cp project-build-${{ env.TIMESTAMP }}.zip gs://${{environment.GCP_BUCKET_NAME}}/project-build-${{ env.TIMESTAMP }}.zip
