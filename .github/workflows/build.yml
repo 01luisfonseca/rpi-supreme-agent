@@ -56,4 +56,4 @@ jobs:
 
       # Step 9: Upload ZIP to Google Cloud Storage
       - name: Upload ZIP to Google Cloud Storage
-        run: gsutil cp project-build-${{ env.TIMESTAMP }}.zip gs://${{secrets.BUCKET}}/project-build-${{ env.TIMESTAMP }}.zip
+        run: gsutil cp project-build-${{ env.TIMESTAMP }}.zip gs://${{vars.BUCKET}}/project-build-${{ env.TIMESTAMP }}.zip
