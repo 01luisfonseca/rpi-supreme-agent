@@ -21,7 +21,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: '20'
 
       # Step 3: Install build-essential
       - name: Install build-essential
@@ -41,7 +41,9 @@ jobs:
 
       # Step 7: Rerun installation of dependencies in production mode
       - name: Rerun installation of dependencies in production mode
-        run: npm install --omit=dev
+        run: |
+          echo ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
+          npm install --omit=dev
 
       # Step 8: Compress the project into a zip file with timestamp
       - name: Create ZIP file with epoch timestamp
