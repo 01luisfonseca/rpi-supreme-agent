@@ -42,19 +42,19 @@ jobs:
       # Step 7: Rerun installation of dependencies in production mode
       - name: Rerun installation of dependencies in production mode
         run: |
-          echo ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
+          echo ${{ secrets.SERVICE_ACCOUNT }}
           npm install --omit=dev
 
       # Step 8: Compress the project into a zip file with timestamp
       - name: Create ZIP file with epoch timestamp
-        run: zip -r project-build-${{ env.TIMESTAMP }}.zip public node_modules package.json
+        run: zip -r project-build-${{ env.TIMESTAMP }}.zip build node_modules package.json
 
       # Step 8: Authenticate to Google Cloud
       - name: Authenticate to Google Cloud
         uses: google-github-actions/auth@v1
         with:
-          credentials_json: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
+          credentials_json: ${{ secrets.SERVICE_ACCOUNT }}
 
       # Step 9: Upload ZIP to Google Cloud Storage
       - name: Upload ZIP to Google Cloud Storage
-        run: gsutil cp project-build-${{ env.TIMESTAMP }}.zip gs://${{env.GCP_BUCKET_NAME}}/project-build-${{ env.TIMESTAMP }}.zip
+        run: gsutil cp project-build-${{ env.TIMESTAMP }}.zip gs://${{env.BUCKET}}/project-build-${{ env.TIMESTAMP }}.zip
